@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReviewService {
@@ -20,7 +21,26 @@ public class ReviewService {
     }
 
 
-    public Review addReview(Review review){
-        return reviewRepository.save(review);
+    public Review addReview(String reviewTitle, String reviewBody, Long movieId, Long userId){
+        Review newReview = new Review();
+        newReview.setReviewText(reviewBody);
+        newReview.setReviewTitle(reviewTitle);
+        newReview.setMovieId(movieId);
+        newReview.setUserId(userId);
+        newReview.setLastUpdated(new Date());
+
+        return reviewRepository.save(newReview);
+    }
+
+    public List<Review> getReviewsByMovieId(Long movieId) {
+        List<Review> reviews = reviewRepository.findReviewsByMovieId(movieId);
+        if(reviews == null) { return null; }
+        return reviews;
+    }
+
+    public List<Review> getReviewsByUserId(Long userId) {
+        List<Review> reviews = reviewRepository.findReviewsByUserId(userId);
+        if(reviews == null) { return null; }
+        return reviews;
     }
 }
