@@ -79,7 +79,13 @@ public class ReviewController {
         return new ResponseEntity<>("Review Added!", HttpStatus.CREATED);
 
     }
-    //just stuff
+
+    @DeleteMapping("/deletereview")
+    public ResponseEntity deleteMovieReview(@RequestParam Long reviewId) {
+        reviewRepository.deleteById(reviewId);
+
+        return new ResponseEntity("Review Deleted!", HttpStatus.OK);
+    }
 
 
 }
