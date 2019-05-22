@@ -69,9 +69,9 @@ public class ReviewController {
     }
 
     @PostMapping("/addreview")
-    public ResponseEntity<String>  addReview(@RequestParam String reviewTitle, @RequestParam String reviewBody, @RequestParam Long movieId, @RequestParam Long userId){
+    public ResponseEntity<String>  addReview(@RequestBody Review review){
 
-        Review newReview = reviewService.addReview(reviewTitle, reviewBody, movieId, userId);
+        Review newReview = reviewService.addReview(review);
 
         if(newReview == null) {
             return new ResponseEntity<>("Error creating review!", HttpStatus.UNPROCESSABLE_ENTITY);

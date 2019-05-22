@@ -21,12 +21,12 @@ public class ReviewService {
     }
 
 
-    public Review addReview(String reviewTitle, String reviewBody, Long movieId, Long userId){
+    public Review addReview(Review review){
         Review newReview = new Review();
-        newReview.setReviewText(reviewBody);
-        newReview.setReviewTitle(reviewTitle);
-        newReview.setMovieId(movieId);
-        newReview.setUserId(userId);
+        newReview.setReviewText(review.getReviewText());
+        newReview.setReviewTitle(review.getReviewTitle());
+        newReview.setMovieId(review.getMovieId());
+        newReview.setUserId(review.getUserId());
         newReview.setLastUpdated(new Date());
 
         return reviewRepository.save(newReview);
