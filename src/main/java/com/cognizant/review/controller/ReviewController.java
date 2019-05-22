@@ -32,7 +32,7 @@ public class ReviewController {
         return reviews;
     }
 
-    @GetMapping("/reviewbymovieid")
+    @PostMapping("/reviewbymovieid")
     public ResponseEntity<String> getReviewsByMovieId(@RequestParam Long movieId) {
         ObjectMapper mapper = new ObjectMapper();
         List<Review> reviews = reviewService.getReviewsByMovieId(movieId);
