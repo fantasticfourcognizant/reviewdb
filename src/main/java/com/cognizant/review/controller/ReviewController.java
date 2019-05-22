@@ -33,9 +33,9 @@ public class ReviewController {
     }
 
     @PostMapping("/reviewbymovieid")
-    public ResponseEntity<String> getReviewsByMovieId(@RequestParam Long movieId) {
+    public ResponseEntity<String> getReviewsByMovieId(@RequestBody Review review) {
         ObjectMapper mapper = new ObjectMapper();
-        List<Review> reviews = reviewService.getReviewsByMovieId(movieId);
+        List<Review> reviews = reviewService.getReviewsByMovieId(review);
 
         String json = new String();
         try{

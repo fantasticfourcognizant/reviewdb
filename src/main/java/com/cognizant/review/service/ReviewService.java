@@ -32,8 +32,8 @@ public class ReviewService {
         return reviewRepository.save(newReview);
     }
 
-    public List<Review> getReviewsByMovieId(Long movieId) {
-        List<Review> reviews = reviewRepository.findReviewsByMovieId(movieId);
+    public List<Review> getReviewsByMovieId(Review review) {
+        List<Review> reviews = reviewRepository.findReviewsByMovieId(review.getMovieId());
         if(reviews == null) { return null; }
         return reviews;
     }
