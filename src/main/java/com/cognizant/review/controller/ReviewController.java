@@ -50,7 +50,7 @@ public class ReviewController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
-    @GetMapping("/reviewbyuserid")
+    @PostMapping("/reviewbyuserid")
     public ResponseEntity<String> getReviewsByUserId(@RequestParam Long userId) {
         ObjectMapper mapper = new ObjectMapper();
         List<Review> reviews = reviewService.getReviewsByUserId(userId);
